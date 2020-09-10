@@ -8,7 +8,8 @@ public class Client {
     public Client(String adress, int port){
         try{
             socket = new Socket(adress,port);
-            System.out.println("Client connected!");
+            System.out.println("Client connected");
+            System.out.println("Connected to IP: "+adress+ " on Port: "+port);
         } catch (IOException ieo){
             System.out.println(ieo);
         }
