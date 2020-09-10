@@ -20,10 +20,29 @@ public class Client {
 
     // ------------- MAIN --------------------
     public static void main(String[]args){
-        Client client_thread = new Client("127.0.0.1",2000);
-        Socket socket = client_thread.getSocket();
-        new Output(socket);
-        new Input(socket);
+        //TODO args
+        if(args.length == 1){
+            String host = args[0];
+            Client client = new Client(host, 2000);
+            Socket socket = client.getSocket();
+            new Output(socket);
+            new Input(socket);
+        } else if(args.length == 2){
+            String host = args[0];
+            int port = Integer.parseInt(args[1]);
+            Client client = new Client(host,port);
+            Socket socket = client.getSocket();
+            new Output(socket);
+            new Input(socket);
+        } else {
+            Client client = new Client("127.0.0.1", 2000);
+            Socket socket = client.getSocket();
+            new Output(socket);
+            new Input(socket);
+        }
+
+
+
     }
 }
 
