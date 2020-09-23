@@ -67,15 +67,16 @@ class Output extends Thread{
                 }
                 kill();
             } catch (IOException ioe){
-                System.out.println(ioe);
+                System.out.println("Socket error");
+                kill();
+
             }
         }
         try {
             socket.close();
             in.close();
-            System.out.println("Socket error: closing down..");
         } catch (IOException ioe){
-            System.out.println(ioe);
+            System.out.println("Error: Could not close socket/bufferedReader");
         }
 
 
@@ -83,6 +84,7 @@ class Output extends Thread{
 
     public void kill(){
         alive = false;
+        System.exit(1);
     }
 }
 
@@ -114,8 +116,10 @@ class Input extends Thread{
 
             } catch (UnknownHostException uknw){
                 System.out.println(uknw);
+                kill();
             } catch (IOException ioe){
                 System.out.println(ioe);
+                kill();
             }
         }
 
@@ -123,5 +127,7 @@ class Input extends Thread{
 
     public void kill(){
         alive = false;
+        System.out.println("Closing down...");
+        System.exit(1);
     }
 }
