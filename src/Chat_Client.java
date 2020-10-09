@@ -1,11 +1,11 @@
 import java.io.*;
 import java.net.*;
 
-public class Client {
+public class Chat_Client {
     public Socket socket = null;
 
     // Konstruktor för klassen Client
-    public Client(String adress, int port){
+    public Chat_Client(String adress, int port){
         try{
             /* Skapar en ny socket med den
             IPadress och port som har skickts
@@ -28,8 +28,8 @@ public class Client {
         switch (args.length) {
             case 1: {
                 int port = Integer.parseInt(args[0]);
-                Client client = new Client("127.0.0.1", port);
-                Socket socket = client.getSocket();
+                Chat_Client chatClient = new Chat_Client("127.0.0.1", port);
+                Socket socket = chatClient.getSocket();
                 new Output(socket);
                 new Input(socket);
                 break;
@@ -37,15 +37,15 @@ public class Client {
             case 2: {
                 String host = args[0];
                 int port = Integer.parseInt(args[1]);
-                Client client = new Client(host, port);
-                Socket socket = client.getSocket();
+                Chat_Client chatClient = new Chat_Client(host, port);
+                Socket socket = chatClient.getSocket();
                 new Output(socket);
                 new Input(socket);
                 break;
             }
             default:
-                Client client = new Client("127.0.0.1", 2000);
-                Socket socket = client.getSocket();
+                Chat_Client chatClient = new Chat_Client("127.0.0.1", 2000);
+                Socket socket = chatClient.getSocket();
                 new Output(socket);
                 new Input(socket);
                 break;
